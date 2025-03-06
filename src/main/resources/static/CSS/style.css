@@ -1,0 +1,77 @@
+/* Very basic styling for readability */
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+h1 {
+    color: #d64343;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+a {
+    margin-right: 10px;
+    text-decoration: none;
+    color: #0066cc;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+form {
+    margin-top: 20px;
+}
+
+label {
+    display: inline-block;
+    width: 100px;
+    margin: 5px 0;
+}
+
+input, select, button {
+    margin: 5px 0;
+    padding: 5px;
+}
+
+button {
+    background-color: #0066cc;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #004d99;
+}
+
+.error {
+    color: red;
+    margin-top: 10px;
+}
+
+.success {
+    color: green;
+    margin-top: 10px;
+}
+
+input.readonly {
+    background-color: #e0e0e0; /* Gray background */
+    pointer-events: none; /* Disables mouse interaction */
+    color: #666; /* Darker gray text for readability */
+}

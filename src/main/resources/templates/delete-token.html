@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Delete Canteen</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+    <h1>Delete Canteen</h1>
+    
+    <!-- Display error message if any -->
+    <p th:if="${error}" th:text="${error}" class="error"></p>
+    
+    <!-- Display success message if any -->
+    <p th:if="${success}" th:text="${success}" class="success"></p>
+    
+    <!-- Form to delete the Canteen -->
+    <form th:action="@{/canteen/delete/{id}(id=${canteen.tokenId})}" th:object="${canteen}" method="post">
+        
+        <label>Token ID:</label>
+        <input type="number" th:field="*{tokenId}" readonly class="readonly"><br>
+        
+        <label>Item Name:</label>
+        <input type="text" th:field="*{itemName}" readonly class="readonly"><br>
+        
+        <label>Price:</label>
+        <input type="number" th:field="*{price}" readonly class="readonly"><br>
+        
+        <label>Issue:</label>
+        <input type="text" th:field="*{issue}" readonly class="readonly"><br>
+        
+        <label>Created By:</label>
+        <input type="text" th:field="*{createdBy}" readonly class="readonly"><br>
+        
+        <button type="submit">Delete Canteen</button>
+    </form>
+    
+    <a href="/canteen">Back to Canteen List</a>
+</body>
+</html>

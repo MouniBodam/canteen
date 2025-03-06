@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Canteen Management System</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+    <h1>Canteen Management System</h1>
+
+    <!-- Display success message -->
+    <div th:if="${success}" style="color: green;">
+        <p th:text="${success}"></p>
+    </div>
+
+    <!-- Display error message -->
+    <div th:if="${error}" style="color: red;">
+        <p th:text="${error}"></p>
+    </div>
+
+    <h2>Search Canteen Items</h2>
+    <form action="/search" method="get">
+        <input type="text" name="name" placeholder="Enter item name" />
+        <button type="submit">Search</button>
+    </form>
+
+    <h2>All Tokens</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Token ID</th>
+                <th>Item Name</th>
+                <th>Price</th>
+                <th>Issue</th>
+                <th>Created At</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="canteen : ${tokens}">
+                <td th:text="${canteen.tokenId}"></td>
+                <td th:text="${canteen.itemName}"></td>
+                <td th:text="${canteen.price}"></td>
+                <td th:text="${canteen.issue}"></td>
+                <td th:text="${canteen.createdAt}"></td>
+                <td>
+                    <a th:href="@{/edit/{tokenId}(tokenId=${canteen.tokenId})}">Edit</a> |
+                    <a th:href="@{/delete/{tokenId}(tokenId=${canteen.tokenId})}">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="/add">Add New Token</a>
+</body>
+</html>

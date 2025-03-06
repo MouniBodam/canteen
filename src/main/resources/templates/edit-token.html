@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Token</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+    <h1>Edit Token</h1>
+
+    <div th:if="${success}" style="color: green;">
+        <p th:text="${success}"></p>
+    </div>
+
+    <div th:if="${error}" style="color: red;">
+        <p th:text="${error}"></p>
+    </div>
+
+    <form action="/edit/{tokenId}" method="post">
+        <label for="tokenId">Token Id:</label>
+        <input type="number" th:value="${canteen.tokenId}" name="tokenId" required/>
+        
+
+        <label for="itemName">Item Name:</label>
+        <input type="text" id="itemName" name="itemName" th:value="${canteen.itemName}" required /><br/><br/>
+
+        <label for="price">Price:</label>
+        <input type="number" id="price" name="price" th:value="${canteen.price}" required /><br/><br/>
+
+        <label for="issue">Issue:</label>
+        <input type="text" id="issue" name="issue" th:value="${canteen.issue}" required /><br/><br/>
+
+        <button type="submit">Update Token</button>
+    </form>
+
+    <br/>
+    <a href="/">Back to Home</a>
+</body>
+</html>
