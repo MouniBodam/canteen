@@ -1,21 +1,60 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Delete </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Token</title>
     <link rel="stylesheet" th:href="@{/css/style.css}" />
 </head>
 <body>
-    <h1>Delete Token</h1>
-    <p th:if="${error}" th:text="${error}" class="error"></p>
-    <p th:if="${success}" th:text="${success}" class="success"></p>
-    <form th:action="@{/delete/{id}(id=${canteen.tokenId})}" th:object="${canteen}" method="post">
-        <label>Token Id</label><input type="number" th:field="*{tokenId}" readonly class="readonly"><br>
-        <label>Item Name:</label><input type="text" th:field="*{itemName}" readonly class="readonly"><br>
-        <label>Price</label><input type="number" th:field="*{price}" readonly class="readonly"><br>
-        <label>Issue:</label><input type="text" step="0.01" th:field="*{issue}" readonly class="readonly"><br>
-        <label>Created At:</label><input type="text" step="0.01" th:field="*{createdAt}" readonly class="readonly"><br>
-        <button type="submit">Delete Token</button>
+    
+
+    <div th:if="${success}" style="color: green;">
+        <p th:text="${success}"></p>
+    </div>
+
+    <div th:if="${error}" style="color: red;">
+        <p th:text="${error}"></p>
+    </div>
+
+    <h1>Edit Token</h1>
+
+    <form th:action="@{/edit/{id}(id=${canteen.tokenId})}" method="post">
+        <div>
+            <label for="tokenId">Token ID</label>
+            <input type="text" id="tokenId" name="tokenId" th:value="${canteen.tokenId}" readonly>
+        </div>
+        
+        <div>
+            <label for="itemName">Student Name</label>
+            <input type="text" id="itemName" name="itemName" th:value="${canteen.itemName}" required>
+        </div>
+        
+        <div>
+            <label for="price">Mobile</label>
+            <input type="number" id="price" name="price" th:value="${canteen.price}" required>
+        </div>
+        
+        <div>
+            <label for="issue">Issue</label>
+            <input type="text" id="issue" name="issue" th:value="${canteen.issue}" required>
+        </div>
+        
+        <div>
+            <label>Created At:</label>
+            <input type="text" step="0.01" th:value="${canteen.createdAt}" readonly class="readonly"><br>
+        </div>
+        
+        <button type="submit">Update Token</button>
     </form>
-    <a href="/">Back</a>
+
+    <div th:if="${error}">
+        <p style="color:red;">Error: <span th:text="${error}"></span></p>
+    </div>
+
+    <div th:if="${success}">
+        <p style="color:green;">Success: <span th:text="${success}"></span></p>
+    </div>
+
 </body>
 </html>
