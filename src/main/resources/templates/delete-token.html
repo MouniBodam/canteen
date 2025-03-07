@@ -8,7 +8,7 @@
     <h1>Delete Token</h1>
     <p th:if="${error}" th:text="${error}" class="error"></p>
     <p th:if="${success}" th:text="${success}" class="success"></p>
-    <form th:action="@{/delete/{tokenId}(id=${canteen.tokenId})}" th:object="${canteen}" method="post">
+    <form th:action="@{/delete/{id}(id=${canteen.tokenId})}" th:object="${canteen}" method="post">
         <label>Token Id</label><input type="number" th:field="*{tokenId}" readonly class="readonly"><br>
         <label>Item Name:</label><input type="text" th:field="*{itemName}" readonly class="readonly"><br>
         <label>Price</label><input type="number" th:field="*{price}" readonly class="readonly"><br>
